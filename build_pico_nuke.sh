@@ -48,13 +48,15 @@ for board in adafruit_feather_rp2040 \
     wiznet_w5100s_evb_pico
 do
     rm -rf *
-    PICO_SDK_PATH=~/Devel/pico/pico-sdk cmake .. -DPICO_BOARD=$board 
+    # PICO_SDK_PATH=~/Devel/pico/pico-sdk cmake .. -DPICO_BOARD=$board 
+    PICO_SDK_PATH=../pico-sdk cmake .. -DPICO_BOARD=$board 
     make -kj20
     mv flash_nuke.uf2 ../release/pico_nuke_$board-$VERSION_MAJOR.$VERSION_MINOR.uf2
     
 done
 
 rm -rf *
-PICO_SDK_PATH=~/Devel/pico/pico-sdk cmake ..
+# PICO_SDK_PATH=~/Devel/pico/pico-sdk cmake ..
+PICO_SDK_PATH=../pico-sdk cmake ..
 make -kj20
 mv flash_nuke.uf2 ../release/pico_nuke_pico_generic-$VERSION_MAJOR.$VERSION_MINOR.uf2
