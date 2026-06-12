@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This repository has been archived in favour of https://github.com/polhenarejos/pico-universal-flash-nuke which contains signed and updated universal nuke firmware.
+
 # Pico Nuke
 Raspberry Pi flash nuke to reset the flash to all 0s for all supported boards.
 
