@@ -23,12 +23,15 @@ target_link_libraries(flash_nuke
 pico_set_binary_type(flash_nuke no_flash)
 
 if(PICO_RP2350)
+    set(ROLLBACK 4)
     pico_set_uf2_family(${CMAKE_PROJECT_NAME} "rp2350-arm-s")
 
     if (SECURE_BOOT_PKEY)
         message(STATUS "Secure Boot Key ${SECURE_BOOT_PKEY}")
         pico_sign_binary(${CMAKE_PROJECT_NAME} ${SECURE_BOOT_PKEY})
         pico_hash_binary(${CMAKE_PROJECT_NAME})
+        message(STATUS "Setting rollback version:\t ${ROLLBACK}")
+        pico_set_binary_version(${CMAKE_PROJECT_NAME} MAJOR 1 MINOR 4 ROLLBACK ${ROLLBACK})
     endif()
 endif()
 
